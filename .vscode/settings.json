@@ -1,0 +1,49 @@
+{
+    "Lua.runtime.version": "Lua 5.1",
+    "Lua.runtime.builtin": {
+        "basic": "disable",
+        "debug": "disable",
+        "io": "disable",
+        "math": "disable",
+        "os": "disable",
+        "package": "disable",
+        "string": "disable",
+        "table": "disable",
+        "utf8": "disable"
+    },
+    "Lua.workspace.library": [
+        "~/.vscode/extensions/ketho.wow-api-0.22.3/Annotations/Core"
+    ],
+    "Lua.diagnostics.globals": [
+        "SlashCmdList",
+        "ColorPickerFrame",
+        "NOT_BOUND",
+        "ChatEdit_InsertLink",
+        "OKAY",
+        "ChatFrameUtil",
+        "SetDesaturation",
+        "CLOSE",
+        "FONT_COLOR_CODE_CLOSE",
+        "ACCEPT",
+        "CreateUnsecuredObjectPool",
+        "SettingsTooltip",
+        "DefaultTooltipMixin",
+        "SOUNDKIT",
+        "EditModeSystemSettingsDialog",
+        "RESET_TO_DEFAULT",
+        "GenerateClosure",
+        "MinimalSliderWithSteppersMixin",
+        "CreateMinimalSliderFormatter",
+        "EditModeManagerFrame",
+        "EditModeSettingDisplayInfoManager",
+        "EditModePresetLayoutManager",
+        "AddonList",
+        "DropDownList1",
+        "HUD_EDIT_MODE_RESET_POSITION",
+        "CollectionsJournal",
+        "ToyBox",
+        "LOCALIZED_CLASS_NAMES_MALE",
+        "LOCALIZED_CLASS_NAMES_FEMALE"
+    ],
+    "Lua.type.weakUnionCheck": true
+}

@@ -1,0 +1,6 @@
+<Bindings>
+    <Binding name="CLICK ProteusButton:LeftButton"
+             header="PROTEUS"
+             runOnUp="false"
+             category="Proteus" />
+</Bindings>
