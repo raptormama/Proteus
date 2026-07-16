@@ -144,8 +144,7 @@ local function eventHandler(self, event, ...)
     end
 end
 
---MARK: Initialization
---Functions that should be run when the addon first starts. Mostly this is default/initial settings.
+--MARK: Initialisation
 function Proteus:OnInitialize()
 	if not ProteusDB or ProteusDB == nil then
 		ProteusDB = ProteusDB_Defaults
@@ -232,32 +231,35 @@ function Proteus:OnInitialize()
 	end
 
     --MARK: Minimap Button
-	local addon = LibStub("AceAddon-3.0"):NewAddon("ProteusLDB")  
-	local ProteusMMButton = LibStub("LibDataBroker-1.1"):NewDataObject("ProteusMMButton", {
-		type = "data display",
-		text = "Proteus",
-		icon = "Interface\\ICONS\\ships_ability_stealth.blp",
-		OnClick = function(frame, button)
-			if button == "LeftButton" then
-				OnscreenButton:SetShown(not OnscreenButton:IsVisible())
-				ProteusDB.showButton = OnscreenButton:IsVisible()
-			end
-			if button == "RightButton" then
-                toggleAddon()
-			end
-		end,
-		OnTooltipShow = function(tooltip)
-			tooltip:AddLine("Left click: Toggle on-screen button")
-			tooltip:AddLine("Right click: Toggle Proteus functionality")
+	LDB = LibStub("LibDataBroker-1.1", true)
+	LDBIcon = LDB and LibStub("LibDBIcon-1.0", true)
+    if LDB then
+        local ProteusMMButton = LDB:NewDataObject("ProteusLDB", {
+            type = "launcher",
+            text = "Proteus",
+            icon = "Interface\\ICONS\\ships_ability_stealth.blp",
+            OnClick = function(frame, button)
+                if button == "LeftButton" then
+                    OnscreenButton:SetShown(not OnscreenButton:IsVisible())
+                    ProteusDB.showButton = OnscreenButton:IsVisible()
+                end
+                if button == "RightButton" then
+                    toggleAddon()
+                end
+            end,
+            OnTooltipShow = function(tooltip)
+                tooltip:AddLine("Left click: Toggle on-screen button")
+                tooltip:AddLine("Right click: Toggle Proteus functionality")
 
-            tooltip:AddLine("  ")
-            if ProteusDB.addonEnabled == true then tooltip:AddLine("Proteus is enabled.") end
-            if ProteusDB.addonEnabled == false then tooltip:AddLine("Proteus is disabled.") end
-		end,
-	})
-
-    local icon = LibStub("LibDBIcon-1.0")
-    icon:Register("ProteusLDB", ProteusMMButton, ProteusDB.minimap)
+                tooltip:AddLine("  ")
+                if ProteusDB.addonEnabled == true then tooltip:AddLine("Proteus is enabled.") end
+                if ProteusDB.addonEnabled == false then tooltip:AddLine("Proteus is disabled.") end
+            end,
+        })
+        if LDBIcon then
+			LDBIcon:Register("ProteusLDB", ProteusMMButton, ProteusDB.minimap)
+		end
+    end
 end
 
 ProteusFrame:SetScript("OnEvent", eventHandler)
@@ -280,8 +282,15 @@ function OnChatCommand(msg)
 	end
 
     if cmd == "minimap" then
-        if ProteusDB.minimap.hide == false then icon:Hide("ProteusLDB") end
-        if ProteusDB.minimap.hide == true then icon:Show("ProteusLDB") end
+        ProteusDB.minimap.hide = not ProteusDB.minimap.hide
+        if ProteusDB.minimap.hide == false then
+            LDBIcon:Show("ProteusLDB")
+            PrettyPrint("Minimap button enabled.")
+        end
+        if ProteusDB.minimap.hide == true then
+            LDBIcon:Hide("ProteusLDB")
+            PrettyPrint("Minimap button disabled.")
+        end
     end
 
     if cmd == "toggle" then
@@ -296,8 +305,8 @@ function OnChatCommand(msg)
 
     if cmd == "help" or cmd == nil or cmd == "" then
         print(" ")
-        PrettyPrint("Auto-cancel non-shrink Noggenfogger buffs on drink!")
-        PrettyPrint("Valid slash command arguments:")
+        PrettyPrint("Auto-cancel non-shrink Noggenfogger buffs!")
+        print("Valid slash command arguments:")
         print("  toggle: toggle addon functionality")
         print("  button: toggle onscreen button")
         print("  minimap: toggle minimap icon")
