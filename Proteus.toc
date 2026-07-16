@@ -1,10 +1,10 @@
 ## Author: Miragosa
-## Interface: 120000, 120001, 120005, 120007, 
+## Interface: 120000, 120001, 120005, 120007
 ## Notes: Cancel non-shrink Noggenfogger buffs. Named for the submarine in the 1966 film Fantastic Voyage.
 ## Title: Proteus
 ## SavedVariables: ProteusDB
 ## IconTexture: 1141396
-## Version: 1.0.0
+## Version: 1.0.1
 ## Author: Miragosa
 ## X-OriginalAuthor: Miragosa
 
