@@ -43,7 +43,10 @@
         "CollectionsJournal",
         "ToyBox",
         "LOCALIZED_CLASS_NAMES_MALE",
-        "LOCALIZED_CLASS_NAMES_FEMALE"
+        "LOCALIZED_CLASS_NAMES_FEMALE",
+        "FrameUtil",
+        "Settings",
+        "DEFAULT_CHAT_FRAME"
     ],
     "Lua.type.weakUnionCheck": true
 }
