@@ -132,6 +132,13 @@ local function eventHandler(self, event, ...)
             if ProteusDB.addonEnabled == false then PrettyPrint("Now disabled.") end
         end
 
+    if ProteusDB.minimap.hide == false then
+        LDBIcon:Show("ProteusLDB")
+    end
+    if ProteusDB.minimap.hide == true then
+        LDBIcon:Hide("ProteusLDB")
+    end
+
         OnscreenButton:SetShown(ProteusDB.showButton)
 	end
 
