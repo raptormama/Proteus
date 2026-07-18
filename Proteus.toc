@@ -4,7 +4,7 @@
 ## Title: Proteus
 ## SavedVariables: ProteusDB
 ## IconTexture: 1141396
-## Version: 1.0.1
+## Version: 1.0.2
 ## Author: Miragosa
 ## X-OriginalAuthor: Miragosa
 
